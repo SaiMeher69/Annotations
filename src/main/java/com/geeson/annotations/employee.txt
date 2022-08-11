@@ -1,0 +1,5 @@
+empId = 1
+empName = Meher
+empSalary = 3000
+empAge = 32
+empJobTitle = SDE
