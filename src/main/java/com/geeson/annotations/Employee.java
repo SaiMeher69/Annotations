@@ -3,7 +3,8 @@ package com.geeson.annotations;
 import com.google.gson.annotations.SerializedName;
 
 public class Employee {
-    @NameToName(value = "empName")
+    //@NameToName(value = "empName")
+    //@SerializedName(value = "empName", alternate = "name")
     String name;
     @NameToName(value = "empJobTitle")
     String jobTitle;

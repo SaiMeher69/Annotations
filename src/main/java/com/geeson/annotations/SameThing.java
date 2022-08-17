@@ -43,16 +43,18 @@ public class SameThing {
         for(Field field : clapp.getDeclaredFields()){
             field.setAccessible(true);
             Class<?> type = field.getType();
+            String value;
+            if(field.isAnnotationPresent(NameToName.class)){
+                value = field.getAnnotation(NameToName.class).value();
+            }else{
+                value = field.getName();
+            }
             if(type.equals(int.class)){
-                String value = field.getAnnotation(NameToName.class).value();
                 int temp = Integer.parseInt(p.getProperty(value));
                 field.set(object,temp);
-                //System.out.println(field.getName() + "### " + p.getProperty(value) + " " + value);
             }else if(type.equals(String.class)){
-                String temp = p.getProperty(field.getAnnotation(NameToName.class).value());
-                String value = field.getAnnotation(NameToName.class).value();
+                String temp = p.getProperty(value);
                 field.set(object,temp);
-                //System.out.println(field.getName() + "$$$" + p.getProperty(value) + " " + value);
             }
         }
         return object;
